@@ -15,7 +15,41 @@ class ClientsController extends Controller
      */
     public function index()
     {
-        return ClientsResource::collection(Clients::all());
+        return ClientsResource::collection(Clients::where('deleted',0)->get());
+    }
+    public function deleted()
+    {
+        return ClientsResource::collection(Clients::where('deleted',1)->get());
+    }
+    public function delete($id)
+    {
+        Clients::where('id',$id)->update([
+            'deleted' => 1
+        ]);
+        return json_encode([
+            'status' => 1,
+            'message' => 'Client supprimé'
+        ]);
+    }
+    public function undelete($id)
+    {
+        Clients::where('id',$id)->update([
+            'deleted' => 0
+        ]);
+        return json_encode([
+            'status' => 1,
+            'message' => 'Client restauré'
+        ]);
+    }
+    public function infos(){
+        $clients = count(Clients::where('deleted',0)->get());
+        $deletedClients = count(Clients::where('deleted',1)->get());
+        $clientWithDebts = count(Clients::where('debts','>','debtAlert')->get());
+        return json_encode([
+            'clientsCount' => $clients,
+            'deletedClients' => $deletedClients,
+            'clientsWithDebts' => $clientWithDebts
+        ]);
     }
 
     /**
@@ -41,9 +75,9 @@ class ClientsController extends Controller
      * @param  \App\Models\Clients  $clients
      * @return \Illuminate\Http\Response
      */
-    public function show(Clients $clients)
+    public function show($id)
     {
-        return ClientsResource::collection($clients->all());
+        return json_encode(Clients::find($id));
     }
 
     /**
@@ -55,12 +89,11 @@ class ClientsController extends Controller
      */
     public function update(Request $request, Clients $clients)
     {
-        if ($clients->update($request->all()) ){
-            return json_encode([
-                'status' => 1,
-                'message' => 'Client modifié'
-            ]);
-        }
+        $clients->update($request->all());
+        return json_encode([
+            'status' => 1,
+            'message' => 'Client modifié'
+        ]);
     }
 
     /**
@@ -69,8 +102,12 @@ class ClientsController extends Controller
      * @param  \App\Models\Clients  $clients
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Clients $clients)
+    public function destroy($id)
     {
-        //
+        Clients::destroy($id);
+        return json_encode([
+            'status' => 1,
+            'message' => 'Client modifié'
+        ]);
     }
 }

@@ -79,54 +79,171 @@
                     </div>
                 </li>
 
+
                 <!-- Nav Item - Alerts -->
                 <li class="nav-item dropdown no-arrow mx-1">
                     <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-bell fa-fw"></i>
-                        <!-- Counter - Alerts -->
-                        <span class="badge badge-danger badge-counter">3+</span>
+                        <i class="fas fa-box fa-fw"></i>
+                        <!-- Counter - Alerts -->  Produits
                     </a>
                     <!-- Dropdown - Alerts -->
                     <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                         aria-labelledby="alertsDropdown">
                         <h6 class="dropdown-header">
-                            Alerts Center
+                            Produits
                         </h6>
-                        <a class="dropdown-item d-flex align-items-center" href="#">
+                        <a class="dropdown-item d-flex align-items-center" href="/products">
                             <div class="mr-3">
                                 <div class="icon-circle bg-primary">
                                     <i class="fas fa-file-alt text-white"></i>
                                 </div>
                             </div>
                             <div>
-                                <div class="small text-gray-500">December 12, 2019</div>
-                                <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                                <span class="font-weight-bold">List des Produits</span>
                             </div>
                         </a>
-                        <a class="dropdown-item d-flex align-items-center" href="#">
+                        <a class="dropdown-item d-flex align-items-center" href="/products/create">
                             <div class="mr-3">
                                 <div class="icon-circle bg-success">
-                                    <i class="fas fa-donate text-white"></i>
+                                    <i class="fas fa-user-plus text-white"></i>
                                 </div>
                             </div>
                             <div>
-                                <div class="small text-gray-500">December 7, 2019</div>
-                                $290.29 has been deposited into your account!
+                                <span class="font-weight-bold">Nouveau Produit</span>
                             </div>
                         </a>
-                        <a class="dropdown-item d-flex align-items-center" href="#">
+                        <a class="dropdown-item d-flex align-items-center" href="/products/alert">
                             <div class="mr-3">
                                 <div class="icon-circle bg-warning">
                                     <i class="fas fa-exclamation-triangle text-white"></i>
                                 </div>
                             </div>
                             <div>
-                                <div class="small text-gray-500">December 2, 2019</div>
-                                Spending Alert: We've noticed unusually high spending for your account.
+                                <span class="font-weight-bold">Produits en alerte</span>
                             </div>
                         </a>
-                        <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                        <a class="dropdown-item d-flex align-items-center" href="/products/deleted">
+                            <div class="mr-3">
+                                <div class="icon-circle bg-warning">
+                                    <i class="fas fa-trash text-white"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="font-weight-bold">Produits supprimés</span>
+                            </div>
+                        </a>
+                    </div>
+                </li>
+
+                <!-- Nav Item - Alerts -->
+                <li class="nav-item dropdown no-arrow mx-1">
+                    <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-users fa-fw"></i>
+                        <!-- Counter - Alerts -->  Clients
+                    </a>
+                    <!-- Dropdown - Alerts -->
+                    <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                        aria-labelledby="alertsDropdown">
+                        <h6 class="dropdown-header">
+                            Clients
+                        </h6>
+                        <a class="dropdown-item d-flex align-items-center" href="/clients">
+                            <div class="mr-3">
+                                <div class="icon-circle bg-primary">
+                                    <i class="fas fa-file-alt text-white"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="font-weight-bold">List des clients</span>
+                            </div>
+                        </a>
+                        <a class="dropdown-item d-flex align-items-center" href="/clients/create">
+                            <div class="mr-3">
+                                <div class="icon-circle bg-success">
+                                    <i class="fas fa-user-plus text-white"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="font-weight-bold">Nouveau client</span>
+                            </div>
+                        </a>
+                        <a class="dropdown-item d-flex align-items-center" href="/clients/debts">
+                            <div class="mr-3">
+                                <div class="icon-circle bg-warning">
+                                    <i class="fas fa-exclamation-triangle text-white"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="font-weight-bold">Clients avec dettes élevées</span>
+                            </div>
+                        </a>
+                        <a class="dropdown-item d-flex align-items-center" href="/clients/deleted">
+                            <div class="mr-3">
+                                <div class="icon-circle bg-warning">
+                                    <i class="fas fa-trash text-white"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="font-weight-bold">Clients supprimés</span>
+                            </div>
+                        </a>
+                    </div>
+                </li>
+                <!-- Nav Item - Alerts -->
+                <li class="nav-item dropdown no-arrow mx-1">
+                    <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-truck fa-fw"></i>
+                        <!-- Counter - Alerts -->  Fournisseurs
+                    </a>
+                    <!-- Dropdown - Alerts -->
+                    <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                        aria-labelledby="alertsDropdown">
+                        <h6 class="dropdown-header">
+                            Fournisseurs
+                        </h6>
+                        <a class="dropdown-item d-flex align-items-center" href="/providers">
+                            <div class="mr-3">
+                                <div class="icon-circle bg-primary">
+                                    <i class="fas fa-file-alt text-white"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="font-weight-bold">List des fournisseurs</span>
+                            </div>
+                        </a>
+                        <a class="dropdown-item d-flex align-items-center" href="/providers/create">
+                            <div class="mr-3">
+                                <div class="icon-circle bg-success">
+                                    <i class="fas fa-user-plus text-white"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="font-weight-bold">Nouveau fournisseur</span>
+                            </div>
+                        </a>
+                        <a class="dropdown-item d-flex align-items-center" href="/providers/debts">
+                            <div class="mr-3">
+                                <div class="icon-circle bg-warning">
+                                    <i class="fas fa-exclamation-triangle text-white"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="font-weight-bold">Dettes fournisseurs</span>
+                            </div>
+                        </a>
+                        <a class="dropdown-item d-flex align-items-center" href="/providers/deleted">
+                            <div class="mr-3">
+                                <div class="icon-circle bg-warning">
+                                    <i class="fas fa-trash text-white"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="font-weight-bold">Fournisseurs supprimés</span>
+                            </div>
+                        </a>
                     </div>
                 </li>
 

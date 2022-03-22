@@ -3,17 +3,7 @@
         <div class="card my-2">
             <div class="card-body">
                 <h4 class="font-weight-bold text-primary">Crée un nouveau client</h4>
-                <div v-if="msg != ''" class="alert alert-dismissible alert-info"  :class="{'alert-danger' : msg.status != 1} ">
-                    <p>
-                        {{ msg.message }}
-                    </p>
-                </div>
-                <div v-if="errors != ''" class="alert alert-dismissible alert-danger">
-                    <p>
-                        {{ errors }}
-                    </p>
-                </div>
-                <form @submit.prevent method="POST" id="clientForm" class="client py-4">
+                <form action="/api/clients" method="POST" class="client py-4">
                     <div class="form-group row">
                         <div class="col-sm-4">
                             <label for="nom">Nom</label>
@@ -43,7 +33,7 @@
                         </textarea>
                     </div>
                     <div class="d-flex flex-row-reverse">
-                        <button @click="createClient" class="btn btn-primary py-2">
+                        <button type="submit" class="btn btn-primary py-2">
                             Ajouter ce client
                         </button>
                     </div>
@@ -58,26 +48,6 @@
 
 <script>
 export default {
-    data() {
-        return {
-            msg : '',
-            errors : ''
-        }
-    },
-    methods: {
-        createClient(){
-            this.msg = '';
-            this.errors = '';
-            const data = new FormData($('#clientForm')[0]);
-            axios.post('/api/clients',data).then(resp=>{
-                this.msg = resp.data;
-                $('#clientForm')[0].reset();
-            }).catch(err=>{
-                this.errors = err.response.data.message;
-                console.log(err.response.data);
-            });
-        }
-    },
 
 }
 </script>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Providers;
 use Illuminate\Http\Request;
+use App\Http\Resources\ProvidersResource;
 
 class ProvidersController extends Controller
 {
@@ -14,7 +15,7 @@ class ProvidersController extends Controller
      */
     public function index()
     {
-        //
+        return ProvidersResource::collection(Providers::where('deleted',0)->get());
     }
 
     /**

@@ -8,7 +8,7 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                List des clients</div>
+                                                List des fournisseurs</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{infos.clientsCount}}</div>
                                         </div>
                                         <div class="col-auto">
@@ -26,7 +26,7 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Ajouter un client</div>
+                                                Ajouter un fournisseur</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-user-plus fa-2x text-gray-300"></i>
@@ -43,7 +43,7 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                                                Clients avec dettes élevées
+                                                Dettes fournisseurs
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
@@ -66,7 +66,7 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Clients supprimés</div>
+                                                Fournisseurs supprimés</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{infos.deletedClients}}</div>
                                         </div>
                                         <div class="col-auto">

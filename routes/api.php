@@ -23,6 +23,10 @@ use App\Http\Controllers\ProvidersController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('/clients/deleted',[ClientsController::class,'deleted']);
+Route::get('/clients/delete/{id}',[ClientsController::class,'delete']);
+Route::get('/clients/undelete/{id}',[ClientsController::class,'undelete']);
+Route::get('/clients/infos',[ClientsController::class,'infos']);
 Route::apiResource('clients',ClientsController::class);
 Route::apiResource('products',ProductsController::class);
 Route::apiResource('providers',ProvidersController::class);

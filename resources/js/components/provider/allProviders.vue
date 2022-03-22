@@ -1,32 +1,37 @@
 <template>
-       <div class="card shadow mb-4">
+    <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">List des clients supprimés</h6>
+            <h6 class="m-0 font-weight-bold text-primary">List des fournisseurs</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTableu" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>#</th>
+                            <th>#id</th>
                             <th>Action</th>
                             <th>Nom</th>
                             <th>info</th>
                             <th>Tél</th>
-                            <th>Dettes</th>
+                            <th>Total payé</th>
+                            <th>Total non payé</th>
+                            <th>Dettes alerte</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="client in clients" :key="client.id" :class="'tr'+client.id">
-                            <td>{{ client.id }}</td>
+                        <tr v-for="provider in providers" :key="provider.id" :class="'tr'+provider.id">
+                            <td>{{ provider.id }}</td>
                             <td>
-                                <button @click="deleteClient(client.id)" class="btn btn-danger mx-2"><i class="fas fa-trash"></i></button>
-                                <button @click="restoreClient(client.id)" class="btn btn-success"><i class="fas fa-recycle"></i></button>
+                                 <button @click="deleteProvider(provider.id)" class="btn btn-danger mx-2"><i class="fas fa-trash"></i></button>
+                                 <router-link :to="'/providers/edit/'+provider.id" class="btn btn-success"><i class="fas fa-pen"></i></router-link>
                             </td>
-                            <td>{{ client.name }}</td>
-                            <td>{{ client.info }}</td>
-                            <td>{{ client.phone }}</td>
-                            <td>{{ client.debts }}</td>
+                            <td>{{ provider.name }}</td>
+                            <td>{{ provider.info }}</td>
+                            <td>{{ provider.phone }}</td>
+                            <td>{{ provider.totalPaid }}</td>
+                            <td>{{ provider.totalUnpaid }}</td>
+                            <td>{{ provider.debtAlert }}</td>
+
                         </tr>
                     </tbody>
                 </table>
@@ -39,7 +44,7 @@
 export default {
     data() {
         return {
-            clients : [],
+            providers : [],
         }
     },
 mounted() {
@@ -56,15 +61,15 @@ created() {
 },
 methods: {
     getData(){
-        axios.get('/api/clients/deleted').then(resp =>{
+        axios.get('/api/providers').then(resp =>{
             console.log(resp.data.data);
-            this.clients = resp.data.data;
+            this.providers = resp.data.data;
         }).catch(err=>{
             console.log(err);
         });
     },
-    deleteClient(id){
-        axios.delete('/api/clients/'+id).then(resp=>{
+        deleteProvider(id){
+        axios.get('/api/providers/delete/'+id).then(resp=>{
             console.log(resp)
             if(resp.data.status == 1){
                 $('.tr'+id).fadeOut();
@@ -73,15 +78,6 @@ methods: {
             console.log(err)
         })
     },
-    restoreClient(id){
-        axios.get('/api/clients/undelete/'+id).then(resp=>{
-            if(resp.data.status == 1){
-                $('.tr'+id).fadeOut();
-            }
-        }).catch(err=>{
-            console.log(err)
-        })
-    }
 },
 
 }
