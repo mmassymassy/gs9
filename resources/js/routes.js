@@ -31,11 +31,8 @@ const routes = [
             children : [
                 {
                     path : '',
-                    component : allClients
-                },
-                {
-                    path : 'debts',
-                    component : allClients
+                    component : allClients,
+                    name : 'clients'
                 },
                 {
                     path : 'create',
@@ -43,7 +40,8 @@ const routes = [
                 },
                 {
                     path : 'edit/:id',
-                    component : editClient
+                    component : editClient,
+                    props : true
                 },
                 {
                     path : 'deleted',
@@ -66,7 +64,9 @@ const routes = [
                 },
                 {
                     path : 'edit/:id',
-                    component : editProvider
+                    component : editProvider,
+                    props: route => ({ idString: `id ${route.params.id}` }),
+                    name : 'edit'
                 },
                 {
                     path : 'deleted',

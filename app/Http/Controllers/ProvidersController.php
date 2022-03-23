@@ -17,6 +17,42 @@ class ProvidersController extends Controller
     {
         return ProvidersResource::collection(Providers::where('deleted',0)->get());
     }
+    public function deleted()
+    {
+        return ProvidersResource::collection(Providers::where('deleted',1)->get());
+    }
+    public function delete($id)
+    {
+        Providers::where('id',$id)->update([
+            'deleted' => 1
+        ]);
+        return json_encode([
+            'status' => 1,
+            'message' => 'Fournisseur supprimé'
+        ]);
+    }
+    public function undelete($id)
+    {
+        Providers::where('id',$id)->update([
+            'deleted' => 0
+        ]);
+            return json_encode([
+                'status' => 1,
+                'message' => 'Fournisseur restauré'
+            ]);
+
+
+    }
+    public function infos(){
+        $providers = count(Providers::where('deleted',0)->get());
+        $deletedProviders = count(Providers::where('deleted',1)->get());
+        $debtsWithProviders = count(Providers::whereRaw('totalUnpaid > debtAlert')->get());
+        return json_encode([
+            'providersCount' => $providers,
+            'deletedProviders' => $deletedProviders,
+            'debtsWithProviders' => $debtsWithProviders
+        ]);
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -26,7 +62,13 @@ class ProvidersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $t = Providers::create($request->all());
+        if($t){
+            return json_encode([
+                'status' => 1,
+                'message' => 'Fournisseur créé'
+            ]);
+        }
     }
 
     /**
@@ -35,9 +77,9 @@ class ProvidersController extends Controller
      * @param  \App\Models\Providers  $providers
      * @return \Illuminate\Http\Response
      */
-    public function show(Providers $providers)
+    public function show($id)
     {
-        //
+        return json_encode(Providers::find($id));
     }
 
     /**
@@ -47,9 +89,14 @@ class ProvidersController extends Controller
      * @param  \App\Models\Providers  $providers
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Providers $providers)
+    public function update($id, Request $r)
     {
-        //
+        $provider = Providers::find($id);
+        $provider->update($r->all());
+        return json_encode([
+            'status' => 1,
+            'message' => 'Founisseur modifié'
+        ]);
     }
 
     /**
@@ -58,8 +105,16 @@ class ProvidersController extends Controller
      * @param  \App\Models\Providers  $providers
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Providers $providers)
+    public function destroy($id)
     {
-        //
+        $p = Providers::find($id);
+        if($p->delete()){
+            return json_encode([
+                'status' => 1,
+                'message' => 'Fournisseur supprimé'
+            ]);
+
+        }
+
     }
 }

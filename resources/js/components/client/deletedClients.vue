@@ -68,6 +68,7 @@ methods: {
             console.log(resp)
             if(resp.data.status == 1){
                 $('.tr'+id).fadeOut();
+                this.$emit('dataChange', 'finalDelete');
             }
         }).catch(err=>{
             console.log(err)
@@ -77,6 +78,7 @@ methods: {
         axios.get('/api/clients/undelete/'+id).then(resp=>{
             if(resp.data.status == 1){
                 $('.tr'+id).fadeOut();
+                this.$emit('dataChange', 'restore');
             }
         }).catch(err=>{
             console.log(err)

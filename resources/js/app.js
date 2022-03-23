@@ -3,16 +3,12 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-
 require('./bootstrap');
 import {createApp} from 'vue';
-import axios from 'axios';
-import VueAxios from 'vue-axios';
+import axios from 'vue-axios';
 import router from './routes';
 import Home from './components/Home.vue';
-const app = createApp(Home).use(
-router
-).mount('#root');
 
+const app = createApp(Home).use(router).mount('#root');
 
 

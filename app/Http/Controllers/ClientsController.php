@@ -87,9 +87,10 @@ class ClientsController extends Controller
      * @param  \App\Models\Clients  $clients
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Clients $clients)
+    public function update($id,Request $request)
     {
-        $clients->update($request->all());
+        $client = Clients::find($id);
+        $client->update($request->all());
         return json_encode([
             'status' => 1,
             'message' => 'Client modifié'

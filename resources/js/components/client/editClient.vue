@@ -17,37 +17,35 @@
                     <div class="form-group row">
                         <div class="col-sm-4">
                             <label for="nom">Nom</label>
-                            <input type="text" name="name" :value="client.name"  class="form-control"
+                            <input type="text" name="name" v-model="client.name"  class="form-control"
                                 placeholder="Nom">
                         </div>
                         <div class="col-sm-4">
                             <label for="tel">Tél</label>
-                            <input type="text" name="phone" :value="client.phone"  class="form-control"
+                            <input type="text" name="phone" v-model="client.phone"  class="form-control"
                                 placeholder="Tél">
                         </div>
                         <div class="col-sm-2">
                             <label for="da">Dettes</label>
-                            <input type="number" name="debts" :value="client.debts"  min="0" class="form-control"
+                            <input type="number" name="debts" v-model="client.debts"  min="0" class="form-control"
                                 placeholder="Dettes">
                         </div>
                         <div class="col-sm-2">
                             <label for="da">Dettes Alerte</label>
-                            <input type="number" :value="client.debtAlert"  name="debtAlert" min="0" class="form-control"
+                            <input type="number" v-model="client.debtAlert"  name="debtAlert" min="0" class="form-control"
                                 placeholder="Dettes Alerte">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="info">Info</label>
-                        <textarea name="info" :value="client.info" cols="30" rows="1" class="form-control"></textarea>
+                        <textarea name="info" v-model="client.info" cols="30" rows="1" class="form-control"></textarea>
                     </div>
                     <div class="d-flex flex-row-reverse">
                         <button @click="editClient" class="btn btn-primary py-2">
-                            Ajouter ce client
+                            Modifier ce client
                         </button>
                     </div>
-
-
                 </form>
             </div>
         </div>
@@ -59,18 +57,24 @@
 export default {
     data() {
         return {
-            id : 4,
-            client : [],
+            id : this.$route.params.id,
+            client : {
+                name : '',
+                phone : '',
+                info : '',
+                debtAlert : '',
+                debts : ''
+            },
             msg : '',
             errors : ''
         }
     },
     created() {
-        this.getData();
+        this.getData(this.$route.params.id);
     },
     methods: {
-        getData(){
-            axios.get('/api/clients/4').then(resp=>{
+        getData(id){
+            axios.get('/api/clients/'+id).then(resp=>{
                 console.log(resp)
                 this.client = resp.data;
             }).catch(err=>{
@@ -80,9 +84,9 @@ export default {
         editClient(){
             this.msg = '';
             this.errors = '';
-            const data = new FormData($('#clientForm')[0]);
-            axios.put('/api/clients/4',data).then(resp=>{
+            axios.patch('/api/clients/'+this.$route.params.id,this.client).then(resp=>{
                 if(resp.data.status == 1){
+                    this.msg = resp.data;
                    $('#clientForm')[0].reset();
                     this.client = [];
                 }

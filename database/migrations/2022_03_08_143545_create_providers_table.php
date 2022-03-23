@@ -19,8 +19,9 @@ class CreateProvidersTable extends Migration
             $table->text('info')->nullable();
             $table->string('phone')->nullable();
             $table->unsignedFloat('debtAlert')->default(20000);
-            $table->unsignedFloat('totalPaid');
-            $table->unsignedFloat('totalUnpaid');
+            $table->unsignedFloat('totalPaid')->dafault(0);
+            $table->unsignedFloat('totalUnpaid')->dafault(0);
+            $table->boolean('deleted')->dafault(0);
             $table->timestamps();
         });
     }

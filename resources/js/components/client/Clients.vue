@@ -77,7 +77,7 @@
                             </div>
                         </div>
      </div>
-     <router-view :infos="infos"></router-view>
+     <router-view @dataChange='getInfos'></router-view>
 </div>
 </template>
 

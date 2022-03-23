@@ -20,6 +20,7 @@ class CreateClientsTable extends Migration
             $table->string('phone')->nullable();
             $table->unsignedFloat('debtAlert')->default(10000);
             $table->unsignedFloat('debts');
+            $table->boolean('deleted')->dafault(0);
             $table->timestamps();
         });
     }

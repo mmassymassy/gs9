@@ -23,7 +23,7 @@
                             <td>{{ provider.id }}</td>
                             <td>
                                  <button @click="deleteProvider(provider.id)" class="btn btn-danger mx-2"><i class="fas fa-trash"></i></button>
-                                 <router-link :to="'/providers/edit/'+provider.id" class="btn btn-success"><i class="fas fa-pen"></i></router-link>
+                                 <router-link :to="{path : '/providers/edit/'+provider.id,name :'edit',params : {id : provider.id}}" class="btn btn-success"><i class="fas fa-pen"></i></router-link>
                             </td>
                             <td>{{ provider.name }}</td>
                             <td>{{ provider.info }}</td>
@@ -73,6 +73,7 @@ methods: {
             console.log(resp)
             if(resp.data.status == 1){
                 $('.tr'+id).fadeOut();
+                this.$emit('dataChange', 'delete') // update block in parent component
             }
         }).catch(err=>{
             console.log(err)

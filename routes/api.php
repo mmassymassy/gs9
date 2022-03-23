@@ -28,8 +28,16 @@ Route::get('/clients/delete/{id}',[ClientsController::class,'delete']);
 Route::get('/clients/undelete/{id}',[ClientsController::class,'undelete']);
 Route::get('/clients/infos',[ClientsController::class,'infos']);
 Route::apiResource('clients',ClientsController::class);
+
 Route::apiResource('products',ProductsController::class);
+
+Route::get('/providers/delete/{id}',[ProvidersController::class,'delete']);
+Route::get('/providers/infos',[ProvidersController::class,'infos']);
+Route::get('/providers/deleted',[ProvidersController::class,'deleted']);
 Route::apiResource('providers',ProvidersController::class);
+Route::get('/providers/undelete/{id}',[ProvidersController::class,'undelete']);
+
+
 Route::apiResource('sells',SellsController::class);
 Route::apiResource('shops',ShopsController::class);
 Route::apiResource('bons',BonsController::class);

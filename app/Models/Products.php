@@ -9,5 +9,5 @@ class Products extends Model
 {
     use HasFactory;
     protected $fillable = ['name','brand','family','model','position','unit','piecesInUnit',
-    'gUnitPrice','dUnitPrice','gPiecePrice','dPiecePrice','initUnitQ','initPieceQ','quantityAlert','expDate'];
+    'gUnitPrice','dUnitPrice','gPiecePrice','dPiecePrice','initUnitQ','initPieceQ','quantityAlert','expDate','deleted'];
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Products;
 use Illuminate\Http\Request;
+use App\Http\Resources\ProductsResource;
 
 class ProductsController extends Controller
 {
@@ -14,7 +15,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        return ProductsResource::collection(Products::all());
+        return ProductsResource::collection(Products::where('deleted',0)->get());
     }
 
     /**
@@ -52,9 +53,10 @@ class ProductsController extends Controller
      * @param  \App\Models\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Products $products)
+    public function update($id,Request $request)
     {
-        if ($products->update($request->all()) ){
+        $product = Products::find($id);
+        if ($product->update($request->all()) ){
             return json_encode([
                 'status' => 1,
                 'message' => 'Produit modifié'
@@ -70,6 +72,12 @@ class ProductsController extends Controller
      */
     public function destroy(Products $products)
     {
-        //
+        $product = Products::find($id);
+        $product->delete();
+        return json_encode([
+            'status' => 1,
+            'message' => 'Produit supprimé'
+        ]);
+
     }
 }

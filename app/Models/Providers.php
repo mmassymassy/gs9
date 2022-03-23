@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Providers extends Model
 {
     use HasFactory;
-    protected $fillable = ['name','phone','info','debtAlert','totalPaid','totalUnpaid'];
+    protected $fillable = ['name','phone','info','debtAlert','totalPaid','totalUnpaid','deleted'];
 }

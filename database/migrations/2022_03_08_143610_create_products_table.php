@@ -34,6 +34,7 @@ class CreateProductsTable extends Migration
             $table->unsignedFloat('olddUnitPrice');
             $table->unsignedFloat('oldgPiecePrice');
             $table->unsignedFloat('olddPiecePrice');
+            $table->boolean('deleted')->default(0);
             $table->timestamps();
         });
     }
