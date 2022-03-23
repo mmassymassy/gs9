@@ -1,5 +1,5 @@
 <template>
-<div class="container-fluid">
+<div class="container">
          <div class="row">
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
@@ -12,7 +12,7 @@
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{infos.productsCount}}</div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-boxes-stacked fa-2x text-gray-300"></i>
+                                            <i class="fas fa-box fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </router-link>
@@ -29,7 +29,7 @@
                                                 Ajouter un produit</div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-box-circle-check fa-2x text-gray-300"></i>
+                                            <i class="fas fa-plus fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </router-link>
@@ -47,12 +47,12 @@
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{infos.productAlert}}</div>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{infos.alertedProducts}}</div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-shield-exclamation fa-2x text-gray-300"></i>
+                                            <i class="fas fa-exclamation fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </router-link>

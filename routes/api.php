@@ -29,7 +29,12 @@ Route::get('/clients/undelete/{id}',[ClientsController::class,'undelete']);
 Route::get('/clients/infos',[ClientsController::class,'infos']);
 Route::apiResource('clients',ClientsController::class);
 
+Route::get('/products/delete/{id}',[ProductsController::class,'delete']);
+Route::get('/products/infos',[ProductsController::class,'infos']);
+Route::get('/products/deleted',[ProductsController::class,'deleted']);
+Route::get('/products/alerted',[ProductsController::class,'alerted']);
 Route::apiResource('products',ProductsController::class);
+Route::get('/products/undelete/{id}',[ProductsController::class,'undelete']);
 
 Route::get('/providers/delete/{id}',[ProvidersController::class,'delete']);
 Route::get('/providers/infos',[ProvidersController::class,'infos']);

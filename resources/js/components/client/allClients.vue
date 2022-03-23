@@ -5,7 +5,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTableu" width="100%" cellspacing="0">
+                <table class="table table-bordered table-hover" id="dataTableu" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -17,8 +17,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="client in clients" :key="client.id" :class="'tr'+client.id">
-                            <td>{{ client.id }}</td>
+                        <tr
+                            v-for="client in clients" :key="client.id"
+                            :class="[client.debts>client.debtAlert ? 'tr'+client.id + ' table-warning' : 'tr'+client.id ]"
+
+                        >
+                         <td>{{ client.id }}</td>
                             <td>
                                  <button @click="deleteClient(client.id)" class="btn btn-danger mx-2"><i class="fas fa-trash"></i></button>
                                  <router-link :to="'/clients/edit/'+client.id" class="btn btn-success"><i class="fas fa-pen"></i></router-link>

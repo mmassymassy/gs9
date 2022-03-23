@@ -44,7 +44,7 @@ class ClientsController extends Controller
     public function infos(){
         $clients = count(Clients::where('deleted',0)->get());
         $deletedClients = count(Clients::where('deleted',1)->get());
-        $clientWithDebts = count(Clients::where('debts','>','debtAlert')->get());
+        $clientWithDebts = count(Clients::whereRaw('debts > debtAlert')->get());
         return json_encode([
             'clientsCount' => $clients,
             'deletedClients' => $deletedClients,

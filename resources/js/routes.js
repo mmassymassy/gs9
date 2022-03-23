@@ -17,6 +17,15 @@ import createProvider from './components/provider/createProvider.vue';
 import editProvider from './components/provider/editProvider.vue';
 import deletedProviders from './components/provider/deletedProviders.vue';
 
+//products
+import Products from './components/product/Products.vue';
+import allProducts from './components/product/allProducts.vue';
+import createProduct from './components/product/createProduct.vue';
+import editProduct from './components/product/editProduct.vue';
+import deletedProducts from './components/product/deletedProducts.vue';
+import alertedProducts from './components/product/alertedProducts.vue';
+
+
 
 
 
@@ -71,6 +80,35 @@ const routes = [
                 {
                     path : 'deleted',
                     component : deletedProviders
+                },
+
+            ]
+        },
+        {
+            path : '/products',
+            component : Products,
+            children : [
+                {
+                    path : '',
+                    component : allProducts
+                },
+                {
+                    path : 'create',
+                    component : createProduct
+                },
+                {
+                    path : 'edit/:id',
+                    component : editProduct,
+                    props: route => ({ idString: `id ${route.params.id}` }),
+                    name : 'edit'
+                },
+                {
+                    path : 'deleted',
+                    component : deletedProducts
+                },
+                {
+                    path : 'alert',
+                    component : alertedProducts
                 },
 
             ]

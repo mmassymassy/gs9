@@ -80,4 +80,42 @@ class ProductsController extends Controller
         ]);
 
     }
+    public function deleted()
+    {
+        return ProductsResource::collection(Products::where('deleted',1)->get());
+    }
+    public function alerted()
+    {
+        return ProductsResource::collection(Products::whereRaw('initUnitQ < quantityAlert')->get());
+    }
+    public function delete($id)
+    {
+        Products::where('id',$id)->update([
+            'deleted' => 1
+        ]);
+        return json_encode([
+            'status' => 1,
+            'message' => 'Produit supprimé'
+        ]);
+    }
+    public function undelete($id)
+    {
+        Products::where('id',$id)->update([
+            'deleted' => 0
+        ]);
+        return json_encode([
+            'status' => 1,
+            'message' => 'Client restauré'
+        ]);
+    }
+    public function infos(){
+        $Products = count(Products::where('deleted',0)->get());
+        $deletedProducts = count(Products::where('deleted',1)->get());
+        $alertedProducts = count(Products::whereRaw('initUnitQ < quantityAlert')->get());
+        return json_encode([
+            'productsCount' => $Products,
+            'deletedProducts' => $deletedProducts,
+            'alertedProducts' => $alertedProducts
+        ]);
+    }
 }
