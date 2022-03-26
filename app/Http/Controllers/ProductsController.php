@@ -32,7 +32,7 @@ class ProductsController extends Controller
             'status' => 1,
             'message' => 'Produit créé'
         ]);
-    }
+       }
     }
 
     /**
@@ -41,9 +41,9 @@ class ProductsController extends Controller
      * @param  \App\Models\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function show(Products $products)
+    public function show($id)
     {
-        return ProductsResource::collection($products->all());
+        return json_encode(Products::find($id));
     }
 
     /**

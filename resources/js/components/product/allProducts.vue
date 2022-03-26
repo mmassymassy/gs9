@@ -28,7 +28,7 @@
                             <td>{{ product.id }}</td>
                             <td>
                                  <button @click="deleteproduct(product.id)" class="btn btn-danger mx-2"><i class="fas fa-trash"></i></button>
-                                 <router-link :to="{path : '/products/edit/'+product.id,name :'edit',params : {id : product.id}}" class="btn btn-success"><i class="fas fa-pen"></i></router-link>
+                                 <router-link :to="{path : '/products/edit/'+product.id,params : {id : product.id}}" class="btn btn-success"><i class="fas fa-pen"></i></router-link>
                             </td>
                             <td>{{ product.name }}</td>
                             <td>{{ product.dPiecePrice }}</td>

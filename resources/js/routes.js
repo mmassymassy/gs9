@@ -25,6 +25,13 @@ import editProduct from './components/product/editProduct.vue';
 import deletedProducts from './components/product/deletedProducts.vue';
 import alertedProducts from './components/product/alertedProducts.vue';
 
+//Shops
+import Shops from './components/shop/Shops.vue';
+import allShops from './components/shop/allShops.vue';
+import createShop from './components/shop/createShop.vue';
+import editShop from './components/shop/editShop.vue';
+import deletedShops from './components/shop/deletedShops.vue';
+
 
 
 
@@ -99,8 +106,7 @@ const routes = [
                 {
                     path : 'edit/:id',
                     component : editProduct,
-                    props: route => ({ idString: `id ${route.params.id}` }),
-                    name : 'edit'
+                    props : true,
                 },
                 {
                     path : 'deleted',
@@ -110,6 +116,31 @@ const routes = [
                     path : 'alert',
                     component : alertedProducts
                 },
+
+            ]
+        },
+        {
+            path : '/Shops',
+            component : Shops,
+            children : [
+                {
+                    path : '',
+                    component : allShops
+                },
+                {
+                    path : 'create',
+                    component : createShop
+                },
+                {
+                    path : 'edit/:id',
+                    component : editShop,
+                    props : true,
+                },
+                {
+                    path : 'deleted',
+                    component : deletedShops
+                },
+
 
             ]
         }

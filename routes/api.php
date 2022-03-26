@@ -42,8 +42,14 @@ Route::get('/providers/deleted',[ProvidersController::class,'deleted']);
 Route::apiResource('providers',ProvidersController::class);
 Route::get('/providers/undelete/{id}',[ProvidersController::class,'undelete']);
 
+//Shops
+Route::get('/shops/delete/{id}',[ShopsController::class,'delete']);
+Route::get('/shops/infos',[ShopsController::class,'infos']);
+Route::get('/shops/deleted',[ShopsController::class,'deleted']);
+Route::apiResource('shops',ShopsController::class);
+Route::get('/shops/undelete/{id}',[ShopsController::class,'undelete']);
+
 
 Route::apiResource('sells',SellsController::class);
-Route::apiResource('shops',ShopsController::class);
 Route::apiResource('bons',BonsController::class);
 

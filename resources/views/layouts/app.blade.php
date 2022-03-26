@@ -191,6 +191,60 @@
                         </a>
                     </div>
                 </li>
+                                <li class="nav-item dropdown no-arrow mx-1">
+                    <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-boxes fa-fw"></i>
+                        <!-- Counter - Alerts -->   Mes achats
+                    </a>
+                    <!-- Dropdown - Alerts -->
+                    <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                        aria-labelledby="alertsDropdown">
+                        <h6 class="dropdown-header">
+                            Mes achats
+                        </h6>
+                        <a class="dropdown-item d-flex align-items-center" href="/shops">
+                            <div class="mr-3">
+                                <div class="icon-circle bg-primary">
+                                    <i class="fas fa-file-alt text-white"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="font-weight-bold">List des Achats</span>
+                            </div>
+                        </a>
+                        <a class="dropdown-item d-flex align-items-center" href="/shops/create">
+                            <div class="mr-3">
+                                <div class="icon-circle bg-success">
+                                    <i class="fas fa-plus text-white"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="font-weight-bold">Nouvel achat</span>
+                            </div>
+                        </a>
+                        <a class="dropdown-item d-flex align-items-center" href="/shops/alert">
+                            <div class="mr-3">
+                                <div class="icon-circle bg-warning">
+                                    <i class="fas fa-exclamation-triangle text-white"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="font-weight-bold">Produits en alerte</span>
+                            </div>
+                        </a>
+                        <a class="dropdown-item d-flex align-items-center" href="/shops/deleted">
+                            <div class="mr-3">
+                                <div class="icon-circle bg-warning">
+                                    <i class="fas fa-trash text-white"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="font-weight-bold">Achats supprimés</span>
+                            </div>
+                        </a>
+                    </div>
+                </li>
                 <!-- Nav Item - Alerts -->
                 <li class="nav-item dropdown no-arrow mx-1">
                     <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"

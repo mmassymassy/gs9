@@ -15,12 +15,13 @@ class ShopsResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' => $this->id,
             'shopDate' => $this->shopDate,
             'providerId' => $this->providerId,
             'productId' => $this->productId,
             'quantity' => $this->quantity,
             'totalPaid' => $this->totalPaid,
-            'totalUnpaid' => $this->totalUnpaid,
+            'total' => $this->total,
             'info' => $this->info,
         ];
     }

@@ -61,4 +61,36 @@ class SellsController extends Controller
     {
         //
     }
+    public function deleted()
+    {
+        return ShopsResource::collection(Shops::where('deleted',1)->get());
+    }
+    public function delete($id)
+    {
+        Shops::where('id',$id)->update([
+            'deleted' => 1
+        ]);
+        return json_encode([
+            'status' => 1,
+            'message' => 'Produit supprimé'
+        ]);
+    }
+    public function undelete($id)
+    {
+        Shops::where('id',$id)->update([
+            'deleted' => 0
+        ]);
+        return json_encode([
+            'status' => 1,
+            'message' => 'Client restauré'
+        ]);
+    }
+    public function infos(){
+        $Shops = count(Shops::where('deleted',0)->get());
+        $deletedShops = count(Shops::where('deleted',1)->get());
+        return json_encode([
+            'ShopsCount' => $Shops,
+            'deletedShops' => $deletedShops,
+        ]);
+    }
 }
