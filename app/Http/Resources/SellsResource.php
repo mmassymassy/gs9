@@ -3,6 +3,8 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Models\Clients;
+use App\Models\Products;
 
 class SellsResource extends JsonResource
 {
@@ -15,15 +17,19 @@ class SellsResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' => $this->id,
             'bonId' => $this->bonId,
-            'clientId' => $this->clientId,
-            'productId' => $this->productId,
+            'client' => Clients::find($this->clientId)->name,
+            'product' => Products::find($this->productId)->name,
             'unitQuantity' => $this->unitQuantity,
             'pieceQuantity' => $this->pieceQuantity,
-            'price' => $this->price,
+            'dsellPrice' => $this->dsellPrice,
+            'gsellPrice' => $this->gsellPrice,
             'totalSell' => $this->totalSell,
             'totalPaid' => $this->totalPaid,
-            'info' => $this->info
+            'info' => $this->info,
+            'mode' => $this->mode,
+            'sellDate' => $this->created_at,
         ];
     }
 }

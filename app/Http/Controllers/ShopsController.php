@@ -69,9 +69,14 @@ class ShopsController extends Controller
      * @param  \App\Models\Shops  $shops
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Shops $shops)
+    public function update(Request $request,$id)
     {
-        //
+        $Sells = Sells::find($id);
+        $Sells->update($request->all());
+        return json_encode([
+            'status' => 1,
+            'message' => 'Vente modifié'
+        ]);
     }
 
     /**
@@ -80,9 +85,16 @@ class ShopsController extends Controller
      * @param  \App\Models\Shops  $shops
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Shops $shops)
+    public function destroy($id)
     {
-        //
+        $p = Sells::find($id);
+        if($p->delete()){
+            return json_encode([
+                'status' => 1,
+                'message' => 'Achat supprimé'
+            ]);
+
+        }
     }
     public function deleted()
     {

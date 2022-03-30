@@ -49,7 +49,13 @@ Route::get('/shops/deleted',[ShopsController::class,'deleted']);
 Route::apiResource('shops',ShopsController::class);
 Route::get('/shops/undelete/{id}',[ShopsController::class,'undelete']);
 
-
+//Sells
+Route::get('/sells/delete/{id}',[SellsController::class,'delete']);
+Route::get('/sells/undelete/{id}',[SellsController::class,'undelete']);
+Route::get('/sells/infos',[SellsController::class,'infos']);
+Route::get('/sells/deleted',[SellsController::class,'deleted']);
 Route::apiResource('sells',SellsController::class);
+
+//bons
 Route::apiResource('bons',BonsController::class);
 

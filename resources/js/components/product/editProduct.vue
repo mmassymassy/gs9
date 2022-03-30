@@ -121,6 +121,7 @@ export default {
             axios.patch('/api/products/'+this.$route.params.id,this.product).then(resp=>{
                 if(resp.data.status == 1){
                     this.msg = resp.data;
+                    this.$emit('productChange', this.$route.params.id);
                    $('#productForm')[0].reset();
                     this.product = [];
                 }
@@ -134,6 +135,7 @@ export default {
     },
     mounted() {
         this.getData(this.$route.params.id);
+        this.$emit('productChange', this.$route.params.id);
     },
     computed : {
         initPieceQ(){

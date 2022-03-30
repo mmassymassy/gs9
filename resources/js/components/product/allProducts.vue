@@ -23,7 +23,7 @@
                         <tr
                             v-for="product in products" :key="product.id"
                             :class="[product.initUnitQ<product.quantityAlert ? 'tr'+product.id + ' table-warning' : 'tr'+product.id ]"
-
+                            @click="this.$emit('productChange', product.id);"
                         >
                             <td>{{ product.id }}</td>
                             <td>

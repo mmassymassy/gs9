@@ -54,6 +54,10 @@
           <div class="card my-2">
             <div class="card-body">
               <h4 class="font-weight-bold text-primary">Nouvel achat : {{product.name}}</h4>
+              <p class="text-warning">
+                  Vérifiez les informations de produit avant d'effectuer un nouvel achat, en cas de changement des
+                  propriétes de produit, mettez à jour les informations en bas, puis remplissez ce formulaire
+              </p>
               <div
                 v-if="msg != ''"
                 class="alert alert-dismissible alert-info"

@@ -20,7 +20,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="product in products" :key="product.id" :class="'tr'+product.id">
+                        <tr v-for="product in products" :key="product.id" :class="'tr'+product.id"
+                         @click="this.$emit('productChange', product.id);"
+                        >
                             <td>{{ product.id }}</td>
                             <td>
                                  <button @click="deleteproduct(product.id)" class="btn btn-danger mx-2"><i class="fas fa-trash"></i></button>

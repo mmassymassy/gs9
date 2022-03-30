@@ -32,7 +32,7 @@
 
                             </td>
                             <td>{{ shop.shopDate }}</td>
-                            <td>{{ shop.productId}}</td>
+                            <td>{{ shop.productName}}</td>
                             <td>{{ shop.quantity }}</td>
                             <td>{{ shop.info }}</td>
                             <td>{{ shop.total }}</td>

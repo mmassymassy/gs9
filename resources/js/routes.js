@@ -32,7 +32,12 @@ import createShop from './components/shop/createShop.vue';
 import editShop from './components/shop/editShop.vue';
 import deletedShops from './components/shop/deletedShops.vue';
 
-
+//Sells
+import Sells from './components/sell/Sells.vue';
+import allSells from './components/sell/allSells.vue';
+import createSell from './components/sell/createSell.vue';
+import editSell from './components/sell/editSell.vue';
+import deletedSells from './components/sell/deletedSells.vue';
 
 
 
@@ -139,6 +144,31 @@ const routes = [
                 {
                     path : 'deleted',
                     component : deletedShops
+                },
+
+
+            ]
+        },
+        {
+            path : '/sells',
+            component : Sells,
+            children : [
+                {
+                    path : '',
+                    component : allSells
+                },
+                {
+                    path : 'create',
+                    component : createSell
+                },
+                {
+                    path : 'edit/:id',
+                    component : editSell,
+                    props : true,
+                },
+                {
+                    path : 'deleted',
+                    component : deletedSells
                 },
 
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Sells;
 use Illuminate\Http\Request;
+use App\Http\Resources\SellsResource;
 
 class SellsController extends Controller
 {
@@ -14,7 +15,7 @@ class SellsController extends Controller
      */
     public function index()
     {
-        //
+        return SellsResource::collection(Sells::where('deleted',0)->get());
     }
 
     /**
@@ -34,9 +35,9 @@ class SellsController extends Controller
      * @param  \App\Models\Sells  $sells
      * @return \Illuminate\Http\Response
      */
-    public function show(Sells $sells)
+    public function show($id)
     {
-        //
+        return json_encode(Shops::find($id));
     }
 
     /**
@@ -63,34 +64,34 @@ class SellsController extends Controller
     }
     public function deleted()
     {
-        return ShopsResource::collection(Shops::where('deleted',1)->get());
+        return SellsResource::collection(Sells::where('deleted',1)->get());
     }
     public function delete($id)
     {
-        Shops::where('id',$id)->update([
-            'deleted' => 1
+        Sells::find($id)->update([
+            'deleted'=> 1
         ]);
         return json_encode([
             'status' => 1,
-            'message' => 'Produit supprimé'
+            'message' => 'Achat supprimé'
         ]);
     }
     public function undelete($id)
     {
-        Shops::where('id',$id)->update([
+        Sells::where('id',$id)->update([
             'deleted' => 0
         ]);
         return json_encode([
             'status' => 1,
-            'message' => 'Client restauré'
+            'message' => 'Achat restauré'
         ]);
     }
     public function infos(){
-        $Shops = count(Shops::where('deleted',0)->get());
-        $deletedShops = count(Shops::where('deleted',1)->get());
+        $Sells = count(Sells::where('deleted',0)->get());
+        $deletedSells = count(Sells::where('deleted',1)->get());
         return json_encode([
-            'ShopsCount' => $Shops,
-            'deletedShops' => $deletedShops,
+            'sellsCount' => $Sells,
+            'deletedSells' => $deletedSells,
         ]);
     }
 }

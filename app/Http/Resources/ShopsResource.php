@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Resources;
-
+use App\Models\Products;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ShopsResource extends JsonResource
@@ -19,6 +19,7 @@ class ShopsResource extends JsonResource
             'shopDate' => $this->shopDate,
             'providerId' => $this->providerId,
             'productId' => $this->productId,
+            'productName' => Products::find($this->productId)->name,
             'quantity' => $this->quantity,
             'totalPaid' => $this->totalPaid,
             'total' => $this->total,
